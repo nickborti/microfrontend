@@ -14,9 +14,12 @@ const mount = (el) => {
 // Then we need to mount our app inside a div
 // Otherwise we don't need to.
 
-const el = document.querySelector('#dev-products');
 if (process.env.NODE_ENV === 'development') {
-    mount(el)
+    const el = document.querySelector('#dev-products');
+    if (el) {
+        // We are probably running in isolation if el exists
+        mount(el);
+    }
 }
 
 // We also need to export the mount function
